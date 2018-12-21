@@ -1,0 +1,3 @@
+[ ] Token censored?
+[ ] Errors marked?
+[ ] Planned features remembered?
