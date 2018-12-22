@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "lol"
+TOKEN = "censored"
 
 @client.event
 async def on_message(message):
