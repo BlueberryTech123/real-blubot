@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "[TOKEN IS OBVIOUSLY CENSORED LMAO]"
+TOKEN = "NTI0NzI5NzE1NjA5ODI5Mzg3.Dv80hA.6_m8BsTZXi8V0bvhXbEF3ALUZ3s"
 
 @client.event
 async def on_message(message):
@@ -42,11 +42,12 @@ async def on_message(message):
         )
         serverInfEmbed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
         serverInfEmbed.add_field(name="Members", value=str(message.server.member_count) + " members overall\n")
-        serverInfEmbed.add_field(name="Emojis (Server only)", value=str(message.server.emojis) + ' *')
-        serverInfEmbed.add_field(name="Misc", value="Server ID: " + message.server.id + "\nServer owner: **" + str(message.server.owner) + "\b\b\b\b\b**", inline="False")
-        serverInfEmbed.set_footer(text="* If list just says \"[]\", there are no server emojis")
+        serverInfEmbed.add_field(name="Emojis (Server only)", value=message.server.emojis)
+        serverInfEmbed.add_field(name="Misc", value="Server ID: " + message.server.id + "\nServer owner: **" + str(message.server.owner) + "**", inline="False")
         serverInfEmbed.set_thumbnail(url=message.server.icon_url) #-----------------------------------------------------------------------------------------------------------
         await client.send_message(message.channel, embed = serverInfEmbed)
+    if message.content.startswith("!stats"):
+        await client.send_message(message.channel, "```Status: Online\nDiscord.py version: " + discord.__version__ + "\nGuilds: " + str(len(client.servers)) + "```")
     # TEMPORARY WIP COMMANDS
     if message.content.startswith("!credits"): await client.send_message(message.channel, "``!credits`` is currently down. This may be because this functionality is work-in-progress :smile:")
     if message.content.startswith("!buyitem") or message.content.startswith("!buy"): await client.send_message(message.channel, "``!buyitem`` is currently down. This may be because this functionality is work-in-progress :smile:")
