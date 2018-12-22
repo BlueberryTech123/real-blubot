@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "NTI0NzI5NzE1NjA5ODI5Mzg3.Dv80hA.6_m8BsTZXi8V0bvhXbEF3ALUZ3s"
+TOKEN = "lol"
 
 @client.event
 async def on_message(message):
