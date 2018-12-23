@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "censored"
+TOKEN = "AlEgItToKeN123"
 
 @client.event
 async def on_message(message):
@@ -10,17 +10,20 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith("!ping"):
+        await client.send_typing(message.channel)
         await client.send_message(message.channel, "Pong! :ping_pong:")
     if message.content.startswith("!help"):
+        await client.send_typing(message.channel)
         embed = discord.Embed(
             description = "Help for commands. If you\'re looking for the items, ``!shop`` would do its job :briefcase:",
             colour = discord.Colour.blue()
         )
         embed.set_author(name=client.user.name,  icon_url=client.user.avatar_url)
-        embed.add_field(name="Information", value="``!help`` ``!ping`` ``!serverinfo``", inline=False)
+        embed.add_field(name="Information", value="``!botinfo`` ``!help`` ``!ping`` ``!serverinfo``", inline=False)
         embed.add_field(name="Currency", value="``!buyitem`` ``!credits`` ``!shop``",   inline=False)
         await client.send_message(message.channel, embed = embed)
     if message.content.startswith("!shop"):
+        await client.send_typing(message.channel)
         shopEmbed = discord.Embed(
             description = "``!buyitem`` or ``!buy`` to buy an  item.\n:inbox_tray: **Buy amount**  :outbox_tray: **Sell amount**",
             colour = discord.Colour.blue()
@@ -36,20 +39,33 @@ async def on_message(message):
         #    if i == i.user.bot:
         #        bot_count = bot_count + 1
         # ---------------------------------------------------------------------------------
+        await client.send_typing(message.channel)
         serverInfEmbed = discord.Embed(
             title = message.server.name + "\'s Server Information",
             colour = discord.Colour.blue()
         )
         serverInfEmbed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
-        serverInfEmbed.add_field(name="Members", value=str(message.server.member_count) + " members overall\n")
+        serverInfEmbed.add_field(name="Members", value=str(message.server.member_count) + " members")
         serverInfEmbed.add_field(name="Emojis (Server only)", value=message.server.emojis)
         serverInfEmbed.add_field(name="Misc", value="Server ID: " + message.server.id + "\nServer owner: **" + str(message.server.owner) + "**", inline="False")
         serverInfEmbed.set_thumbnail(url=message.server.icon_url) #-----------------------------------------------------------------------------------------------------------
         await client.send_message(message.channel, embed = serverInfEmbed)
-    if message.content.startswith("!stats"):
-        await client.send_message(message.channel, "```Status: Online\nDiscord.py version: " + discord.__version__ + "\nGuilds: " + str(len(client.servers)) + "```")
+    if message.content.startswith("!botinfo"):
+        await client.send_typing(message.channel)
+        await client.send_message(message.channel, "```Status: Online\nDiscord.py version: " + discord.__version__ + "\nGuilds: " + str(len(client.servers)) + "\nWebcosket Gateway: " + str(client.ws) + "```")
+    if message.content.startswith("!profile"):
+        profileEmbed = discord.Embed(
+            title = str(message.author) + "\'s profile",
+            colour = discord.Colour.blue()
+        )
+        profileEmbed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
+        profileEmbed.add_field(name="")
     # TEMPORARY WIP COMMANDS
-    if message.content.startswith("!credits"): await client.send_message(message.channel, "``!credits`` is currently down. This may be because this functionality is work-in-progress :smile:")
-    if message.content.startswith("!buyitem") or message.content.startswith("!buy"): await client.send_message(message.channel, "``!buyitem`` is currently down. This may be because this functionality is work-in-progress :smile:")
+    if message.content.startswith("!credits"):
+        await client.send_typing(message.channel)
+        await client.send_message(message.channel, "``!credits`` is currently down. This may be because this functionality is work-in-progress :smile:")
+    if message.content.startswith("!buyitem") or message.content.startswith("!buy"):
+        await client.send_typing(message.channel)
+        await client.send_message(message.channel, "``!buyitem`` is currently down. This may be because this functionality is work-in-progress :smile:")
 
 client.run(TOKEN)
