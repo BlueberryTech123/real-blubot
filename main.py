@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "AlEgItToKeN123"
+TOKEN = "AlEgItToKeN1234"
 
 @client.event
 async def on_message(message):
@@ -18,9 +18,9 @@ async def on_message(message):
             description = "Help for commands. If you\'re looking for the items, ``!shop`` would do its job :briefcase:",
             colour = discord.Colour.blue()
         )
-        embed.set_author(name=client.user.name,  icon_url=client.user.avatar_url)
+        embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         embed.add_field(name="Information", value="``!botinfo`` ``!help`` ``!ping`` ``!serverinfo``", inline=False)
-        embed.add_field(name="Currency", value="``!buyitem`` ``!credits`` ``!shop``",   inline=False)
+        embed.add_field(name="Currency", value="``!buyitem`` ``!credits`` ``!profile`` ``!shop``",   inline=False)
         await client.send_message(message.channel, embed = embed)
     if message.content.startswith("!shop"):
         await client.send_typing(message.channel)
@@ -28,7 +28,7 @@ async def on_message(message):
             description = "``!buyitem`` or ``!buy`` to buy an  item.\n:inbox_tray: **Buy amount**  :outbox_tray: **Sell amount**",
             colour = discord.Colour.blue()
         )
-        shopEmbed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+        shopEmbed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         shopEmbed.add_field(name="Items", value=":inbox_tray: $1 :outbox_tray: $1   :cheese: - **Rotten Cheese**\n:inbox_tray: $10 :outbox_tray: $8   :alembic: - **Silverfish remover**\n:inbox_tray: $50 :outbox_tray: $40   :pick: - **Pickaxe**\n:inbox_tray: $51 :outbox_tray: $41   :fishing_pole_and_fish: - **Fishing Rod**\n:inbox_tray: $55 :outbox_tray: $44   :wrench: - **Wrench**\n:inbox_tray: $100 :outbox_tray: $80   :8ball: - **8ball**\n:inbox_tray: $1050 :outbox_tray: $870   :computer: - **Laptop**\n:inbox_tray: $1050 :outbox_tray: $870   :iphone: - **Smartphone**\n:inbox_tray: $2000 :outbox_tray: $1600   :tv: - **TV**\n:inbox_tray: $3000 :outbox_tray: $2999   :blue_car: - **Car**\n:inbox_tray: $5000 :outbox_tray: $4999   :rocket: - **Spaceship**", inline=False)
         shopEmbed.add_field(name="Earnable Items", value="\n:inbox_tray: $N/A :outbox_tray: $N/A   :shrimp: - **Silverfish**\n:inbox_tray: $N/A :outbox_tray: $10   :house: - **House Upgrade**\n:inbox_tray: $N/A :outbox_tray: $12   :fish: - **Fish**\n:inbox_tray: $N/A :outbox_tray: $15   :herb: - **Twigs**\n:inbox_tray: $N/A :outbox_tray: $15   :evergreen_tree: - **Tree Logs**\n:inbox_tray: $N/A :outbox_tray: $100   :gift: - **Lootbox**\n:inbox_tray: $N/A :outbox_tray: $500   :gem: - **Diamond**\n:inbox_tray: $N/A :outbox_tray: $510   :shell: - **Fossil**\n:inbox_tray: $N/A :outbox_tray: $90000   :sparkles: - **Stardust**", inline=False)
         await client.send_message(message.channel, embed = shopEmbed)
@@ -44,7 +44,7 @@ async def on_message(message):
             title = message.server.name + "\'s Server Information",
             colour = discord.Colour.blue()
         )
-        serverInfEmbed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+        serverInfEmbed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         serverInfEmbed.add_field(name="Members", value=str(message.server.member_count) + " members")
         serverInfEmbed.add_field(name="Emojis (Server only)", value=message.server.emojis)
         serverInfEmbed.add_field(name="Misc", value="Server ID: " + message.server.id + "\nServer owner: **" + str(message.server.owner) + "**", inline="False")
@@ -54,12 +54,15 @@ async def on_message(message):
         await client.send_typing(message.channel)
         await client.send_message(message.channel, "```Status: Online\nDiscord.py version: " + discord.__version__ + "\nGuilds: " + str(len(client.servers)) + "\nWebcosket Gateway: " + str(client.ws) + "```")
     if message.content.startswith("!profile"):
+        await client.send_typing(message.channel)
         profileEmbed = discord.Embed(
             title = str(message.author) + "\'s profile",
             colour = discord.Colour.blue()
         )
         profileEmbed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
-        profileEmbed.add_field(name="")
+        profileEmbed.set_thumbnail(url=message.author.avatar_url)
+        profileEmbed.add_field(name="Currency Info", value=":moneybag: 0")
+        await client.send_message(message.channel, embed = profileEmbed)
     # TEMPORARY WIP COMMANDS
     if message.content.startswith("!credits"):
         await client.send_typing(message.channel)
