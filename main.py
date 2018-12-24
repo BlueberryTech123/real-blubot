@@ -4,6 +4,11 @@ import asyncio
 client = discord.Client()
 TOKEN = "AlEgItToKeN1234"
 
+#emoji_credits = discord.Emoji(
+#    name="CREDITS",
+#    id=526481493464317962
+#)
+
 @client.event
 async def on_message(message):
     bot_count = 0
@@ -56,12 +61,14 @@ async def on_message(message):
     if message.content.startswith("!profile"):
         await client.send_typing(message.channel)
         profileEmbed = discord.Embed(
-            title = str(message.author) + "\'s profile",
+            title = str(message.author) + "\'s profile card",
             colour = discord.Colour.blue()
         )
         profileEmbed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
         profileEmbed.set_thumbnail(url=message.author.avatar_url)
-        profileEmbed.add_field(name="Currency Info", value=":moneybag: 0")
+        profileEmbed.add_field(name="Currency Info", value="<:CREDITS:526481493464317962> 0")
+        profileEmbed.add_field(name="Badges", value=":credit_card:")
+        profileEmbed.add_field(name="Other Information", value="<:XP:526481594005979137> 0/1\n<:LVL:526481522534907904> 0\n<:HP:526481508949557250> None")
         await client.send_message(message.channel, embed = profileEmbed)
     # TEMPORARY WIP COMMANDS
     if message.content.startswith("!credits"):
