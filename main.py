@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 client = discord.Client()
-TOKEN = "AlEgItToKeN1234"
+TOKEN = "AlEgItToKeN"
 
 #emoji_credits = discord.Emoji(
 #    name="CREDITS",
