@@ -18,10 +18,10 @@
             "tag":"Bannana_Boi999#0278",
             "id":"373661498263732234"
         }
-    }
+    },
     "blacklistedusers": {
         "506417478990036992": { "id":"506417478990036992", "username":"alek", "discriminator":"9999" },
         "506417478990036992": { "id":"476890598729842728", "username":"Zachary", "discriminator":"7777" }
-    }
+    },
     "blacklistedservers": null
 }
