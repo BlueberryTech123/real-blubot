@@ -1,9 +1,9 @@
 {
     "botadmin": {
-        "C;\good_stuff\blueberry_tech.exe": {
-            "username":"C;\good_stuff\blueberry_tech.exe",
+        "C;\\good_stuff\\blueberry_tech.exe": {
+            "username":"C;\\good_stuff\\blueberry_tech.exe",
             "discriminator":"4416",
-            "tag":"C;\good_stuff\blueberry_tech.exe#4416",
+            "tag":"C;\\good_stuff\\blueberry_tech.exe#4416",
             "id":"429069454601879572"
         }
         "Landini": {
