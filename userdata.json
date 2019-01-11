@@ -1,5 +1,11 @@
 {
     "botadmin": {
+        "C;\good_stuff\blueberry_tech.exe": {
+            "username":"C;\good_stuff\blueberry_tech.exe",
+            "discriminator":"4416",
+            "tag":"C;\good_stuff\blueberry_tech.exe#4416",
+            "id":"429069454601879572"
+        }
         "Landini": {
             "username":"Landini",
             "discriminator":"7225",
@@ -23,5 +29,8 @@
         "506417478990036992": { "id":"506417478990036992", "username":"alek", "discriminator":"9999" },
         "506417478990036992": { "id":"476890598729842728", "username":"Zachary", "discriminator":"7777" }
     },
-    "blacklistedservers": null
+    "blacklistedservers": null,
+    "userdata": {
+        "//"
+    }
 }
